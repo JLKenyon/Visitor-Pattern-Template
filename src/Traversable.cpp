@@ -23,8 +23,7 @@
   OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <Visitable.hpp>
+#include <Traversable.hpp>
 
-void Visitable::accept(Visitor &)
+void Traversable::traverse(Visitor &)
 {}
-

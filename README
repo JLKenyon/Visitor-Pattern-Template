@@ -1,0 +1,32 @@
+Sample Visitor Pattern and Flexible Tree Structure
+
+= Abstract =
+
+In this project I am laying out a somewhat complex C++ implementation of the visitor pattern.  This may be used as a playground for learning how to use the visitor pattern or a test bed for trying new ideas built upon the visitor pattern.  I cannot yet recommend it for production use, as it is still a problem that is early in development.
+
+= Intro =
+
+The visitor pattern is a method of creating large and complex tree datastructures which carefully separate logic and data.  The goal is to provide a very flexible design which is tolerant to several large classes of refactoring that a traditional direct object model would not easily allow.  Additionally, the visitor pattern allows a means of mapping or iteration across an arbitrary tree, basically filling the role of a for loop across an arbitrary tree structure.
+
+= Relevant Concepts =
+
+Recusion
+Mapping and Iteration
+Multiple Dispatch
+Tree Data structures
+
+= Obstacles =
+
+The basic idea is that we want to build a tree structure with a wide range of different typed nodes.  And we want to do so in such a way that embraces Object-Oriented design and flexible patterns, while still strictly relying upon the language and compiler to handle types.  That means: no void pointers, no labels (enum) to determine types, no repetitive boiler plate, and no pre-processor magic.  This presents a problem for us, a shortcoming of the C language, and all of its kin, with regard to types: C does not have builtin support for dynamic, late bound multiple dispatch.
+
+== Multiple dispatch ==
+
+Multiple dispatch is the ability of a function to behave differently based on the objects given.  So if we have defined a function prototype f(x), then f1(x) will be called if x is of one type, and f2(x) will be called if it is another.  This sounds a lot like function overloading, and this is because it _is_ a lot like function overloading, with one big exception.  C++'s support for function overloading is resolved at compile time, so it infers the type of x, and selects which function call to drop into the code.  We want dynamic, run time overloading, where the parameter type is not known.  To a novice this sounds impossible in C++ because it is a static language, but C++ does allow this by way of inheritance, more specifically, by way of virtual functions.
+
+Virtual functions allow you to select a function based on its type, instead of its pointer.  A call to a virtual function will not go directly to a function, but rather will follow a pointer hidden inside of the object in question to that objects virtual function table.  Each type of object has  different table, so different objects will get different behaviors for the same method call.  In this way, it effectively resolves the type of the object.  Now we can take advantage of this by having that previously unknown object call a method on itself, from the context in which its type is known.
+
+Incidentally, few language have support for multiple dispatch automatically, although some do support it as a built in feature (most ML languages, haskell), many implement it internally or have powerful libraries for it (lisp and python), and any OO language can implement it with this trick above.  Multiple dispatch can also be implemented in other ways, but they are debatable in their "rightness."  It is recommended that those interested in using multiple dispatch as a cornerstone of their design should learn to use it in a language such as lisp or haskell.
+
+
+
+

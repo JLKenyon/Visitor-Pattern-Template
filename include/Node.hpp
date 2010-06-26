@@ -23,8 +23,26 @@
   OTHER DEALINGS IN THE SOFTWARE.
 */
 
+#ifndef _NODE_HPP_
+#define _NODE_HPP_
+
+class Node;
+
 #include <Visitable.hpp>
+#include <Types.hpp>
 
-void Visitable::accept(Visitor &)
-{}
+#include <boost/shared_ptr.hpp>
+#include <boost/weak_ptr.hpp>
 
+typedef boost::shared_ptr<Node> Node_Ptr;
+typedef boost::weak_ptr<Node>   Weak_Node_Ptr;
+
+class Node : public Visitable
+{
+public:
+    virtual ~Node(){}
+private:
+    Types<Node_Ptr>::Container heirarchical_children;
+};
+
+#endif /* NODE_HPP */

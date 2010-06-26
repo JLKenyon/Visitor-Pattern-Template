@@ -23,8 +23,18 @@
   OTHER DEALINGS IN THE SOFTWARE.
 */
 
+#ifndef _VISITOR_HPP_ 
+#define _VISITOR_HPP_ 
+
+class Visitor;
+
 #include <Visitable.hpp>
 
-void Visitable::accept(Visitor &)
-{}
+class Visitor
+{
+public:
+    virtual ~Visitor(){}
+    virtual void visit(Visitable *);
+};
 
+#endif

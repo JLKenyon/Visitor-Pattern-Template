@@ -23,8 +23,20 @@
   OTHER DEALINGS IN THE SOFTWARE.
 */
 
+#ifndef _TRAVERSABLE_HPP_
+#define _TRAVERSABLE_HPP_
+
+class Traversable;
+
+#include <Node.hpp>
 #include <Visitable.hpp>
+#include <Visitor.hpp>
 
-void Visitable::accept(Visitor &)
-{}
+class Traversable : public Node
+{
+public:
+    virtual ~Traversable(){}
+    virtual void traverse(Visitor &);
+};
 
+#endif

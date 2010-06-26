@@ -23,8 +23,6 @@
   OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <Visitable.hpp>
+#include <Node.hpp>
 
-void Visitable::accept(Visitor &)
-{}
-
+// At present, Node has no functions, This will change

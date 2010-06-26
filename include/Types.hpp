@@ -23,8 +23,18 @@
   OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <Visitable.hpp>
+#ifndef _TYPES_HPP_
+#define _TYPES_HPP_
 
-void Visitable::accept(Visitor &)
-{}
+#include <vector>
+#include <list>
+#include <map>
+#include <deque>
 
+template <typename T>
+struct Types
+{
+    typedef std::deque<T> Container;
+};
+
+#endif /* _TYPES_H_ */

@@ -23,17 +23,23 @@
   OTHER DEALINGS IN THE SOFTWARE.
 */
 
+#ifndef _VISITABLE_HPP_ 
+#define _VISITABLE_HPP_ 
+
 class Visitable;
 
-#ifndef VISITABLE_HPP 
-#define VISITABLE_HPP 
-
 #include <Visitor.hpp>
+#include <boost/shared_ptr.hpp>
+
+typedef boost::shared_ptr<Visitable> Visitable_Ptr;
 
 class Visitable
 {
 public:
+    virtual ~Visitable(){}
     virtual void accept(Visitor &);
 };
+
+
 
 #endif
