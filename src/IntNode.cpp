@@ -1,3 +1,4 @@
+
 /*
   Copyright (c) 2010 John Lincoln Kenyon
   
@@ -23,33 +24,5 @@
   OTHER DEALINGS IN THE SOFTWARE.
 */
 
-/**
- */
+#include <IntNode.hpp>                                    
 
-#ifndef _NODE_HPP_
-#define _NODE_HPP_
-
-class Node;
-
-#include <Traversable.hpp>
-#include <Types.hpp>
-#include <Visitable.hpp>
-
-#include <boost/shared_ptr.hpp>
-#include <boost/weak_ptr.hpp>
-
-/**
- * The Node class is the lowest level abstraction which the users of the
- * library will want to use.  It actually adds no functionality on top
- * of the Traversable object.
- */
-class Node : public Traversable
-{
-public:
-    /**
-     * Generic Destructor
-     */
-    virtual ~Node(){}
-};
-
-#endif /* NODE_HPP */

@@ -23,33 +23,39 @@
   OTHER DEALINGS IN THE SOFTWARE.
 */
 
-/**
- */
+#ifndef _BRANCH_HPP_
+#define _BRANCH_HPP_
 
-#ifndef _NODE_HPP_
-#define _NODE_HPP_
+class Branch;
 
-class Node;
+//#include <Node.hpp>
 
-#include <Traversable.hpp>
-#include <Types.hpp>
 #include <Visitable.hpp>
+#include <Types.hpp>
 
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
 
+typedef boost::shared_ptr<Branch>      Branch_Ptr;
+typedef boost::weak_ptr  <Branch> Weak_Branch_Ptr;
+
 /**
- * The Node class is the lowest level abstraction which the users of the
- * library will want to use.  It actually adds no functionality on top
- * of the Traversable object.
+ * The Branch class adds a list of links to children, 
  */
-class Node : public Traversable
+class Branch : public Visitable
 {
 public:
     /**
-     * Generic Destructor
+     * Generic destructor
      */
-    virtual ~Node(){}
+    virtual ~Branch(){}
+
+private:
+    /**
+     * As this is a tree, it needs children.  The extremely long name reflects
+     * the fact that there may later by other kinds of children.
+     */
+    Types<Branch_Ptr>::Container heirarchical_children;
 };
 
-#endif /* NODE_HPP */
+#endif /* BRANCH_HPP */

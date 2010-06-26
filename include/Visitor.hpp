@@ -30,10 +30,26 @@ class Visitor;
 
 #include <Visitable.hpp>
 
+/**
+ * The visitor class is the basic container for logic within the Visitor
+ * pattern.  Any logic which runs upon the datastructure should be implemented
+ * by way of a visitor object.
+ */
 class Visitor
 {
 public:
+    /**
+     * Generic Destructor
+     */
     virtual ~Visitor(){}
+
+    /**
+     * Visit is the key to the visitor pattern.  Any logic to be run on the
+     * tree structure should be implemented within the visit method of a
+     * Visitor object.  The specific type of node upon which the logic should
+     * run is specificied in the visit method, which should be overridden for
+     * all actions.
+     */
     virtual void visit(Visitable *);
 };
 

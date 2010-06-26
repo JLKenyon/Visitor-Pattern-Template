@@ -12,7 +12,8 @@ SET(SRC_DIR ${CMAKE_SOURCE_DIR}/../src/)
 SET(APP_DIR ${CMAKE_SOURCE_DIR}/../apps/)
 SET(INC_DIR ${CMAKE_SOURCE_DIR}/../include/)
 
-SET(CMAKE_CXX_FLAGS "-Wall -W -Wshadow -pedantic-errors -pedantic -Wextra -Werror -Wc++0x-compat")
+#SET(CMAKE_CXX_FLAGS "-Wall -W -Wshadow -pedantic-errors -pedantic -Wextra -Werror -Wc++0x-compat")
+SET(CMAKE_CXX_FLAGS "-Wall -W -Wshadow -pedantic-errors -pedantic -Wextra -Werror")
 
 INCLUDE_DIRECTORIES(${INC_DIR}/../include/)
 

@@ -23,17 +23,45 @@
   OTHER DEALINGS IN THE SOFTWARE.
 */
 
+/**
+ * The Types file contains a simple switch-board/wrapper for various simple
+ * types used within the library.  This allows for simple refactoring by
+ * making a switch at a single line within this file.
+ *
+ * Ideally, a test would exist that would test the entire library where
+ * the types listed here are changed to other compatible types, such as if
+ * the deque class were replaced by the vector or list class, and retested.
+ */
+
 #ifndef _TYPES_HPP_
 #define _TYPES_HPP_
+
+template <typename T>
+struct Types;
 
 #include <vector>
 #include <list>
 #include <map>
 #include <deque>
 
+/**
+ * The Types struct exists at a means of exploiting a failing of the template
+ * system in C++, specifically that one cannot apply templates to a typedef.
+ * 
+ * One could instead create a new class for each, inheriting from the desired
+ * class, but this is a bit cumbersome for simple cases.
+ */
 template <typename T>
 struct Types
 {
+    /**
+     * The Container is the generic linear container used within the Visitor
+     * example.  It can be replaced fairly easily by changing it here.
+     *
+     * The Deque class was selected because it is optimized for adding nodes
+     * to the end, and is a generally flexible type.  This choice is actually
+     * fairly flexible, vector<> or list<> would work as well.
+     */
     typedef std::deque<T> Container;
 };
 
