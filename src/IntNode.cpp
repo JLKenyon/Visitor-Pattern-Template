@@ -25,4 +25,13 @@
 */
 
 #include <IntNode.hpp>                                    
+IntNode::IntNode()
+{
+    value = 0;
+}
+
+IntNode::IntNode(int _value)
+{
+    value = _value;
+}
 

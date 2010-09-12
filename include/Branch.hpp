@@ -42,20 +42,13 @@ typedef boost::weak_ptr  <Branch> Weak_Branch_Ptr;
 /**
  * The Branch class adds a list of links to children, 
  */
-class Branch : public Visitable
+class Branch : public Visitable, public Types<Branch_Ptr>::Container
 {
 public:
     /**
      * Generic destructor
      */
     virtual ~Branch(){}
-
-private:
-    /**
-     * As this is a tree, it needs children.  The extremely long name reflects
-     * the fact that there may later by other kinds of children.
-     */
-    Types<Branch_Ptr>::Container heirarchical_children;
 };
 
 #endif /* BRANCH_HPP */

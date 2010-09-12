@@ -31,6 +31,9 @@ class IntNode;
 
 #include <Node.hpp>
 
+typedef boost::shared_ptr<IntNode>      IntNode_Ptr;
+typedef boost::weak_ptr  <IntNode> Weak_IntNode_Ptr;
+
 /**
  * IntNode is a trivial Node type that has a single Integer value.
  * This class is an example, it doesn't have any real purpose.
@@ -43,12 +46,24 @@ public:
     */
     virtual ~IntNode() {}
 
+    /**
+     * Default constructor, defaults to a value of zero.
+    */
+    IntNode();
+
+    /**
+     * Parametric constructor, user specified value
+     * \param _value The initial value stored in node
+    */
+    IntNode(int _value);
+
 public:
     /**
      * Generic Integer value, no real specified purpose.
      */
-    int val;
+    int value;
     
 };
 
 #endif /* _INTNODE_H_ */
+

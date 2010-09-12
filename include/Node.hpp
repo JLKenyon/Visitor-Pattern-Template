@@ -38,6 +38,9 @@ class Node;
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
 
+typedef boost::shared_ptr<Node>      Node_Ptr;
+typedef boost::weak_ptr  <Node> Weak_Node_Ptr;
+
 /**
  * The Node class is the lowest level abstraction which the users of the
  * library will want to use.  It actually adds no functionality on top
