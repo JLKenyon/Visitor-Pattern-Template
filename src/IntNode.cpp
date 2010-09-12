@@ -24,7 +24,8 @@
   OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <IntNode.hpp>                                    
+#include <Visitor/IntNode.hpp>                                    
+
 IntNode::IntNode()
 {
     value = 0;

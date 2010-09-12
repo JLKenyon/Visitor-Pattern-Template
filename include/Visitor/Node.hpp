@@ -23,44 +23,36 @@
   OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef _TRAVERSABLE_HPP_
-#define _TRAVERSABLE_HPP_
+/**
+ */
 
-class Traversable;
+#ifndef _NODE_HPP_
+#define _NODE_HPP_
 
-#include <Branch.hpp>
-#include <Visitable.hpp>
-#include <Visitor.hpp>
+class Node;
+
+#include <Visitor/Traversable.hpp>
+#include <Visitor/Types.hpp>
+#include <Visitor/Visitable.hpp>
 
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
 
-typedef boost::shared_ptr<Traversable>      Traversable_Ptr;
-typedef boost::weak_ptr  <Traversable> Weak_Traversable_Ptr;
+typedef boost::shared_ptr<Node>      Node_Ptr;
+typedef boost::weak_ptr  <Node> Weak_Node_Ptr;
 
 /**
- * The Traversable class adds a method to traverse across nodes along the
- * heirarchical connections, which should be a strict-tree(1).
- *
- * Other connections and traversal methods may exist, which may be
- * generalized graphs.  However, for all of our sanity, there should be
- * a canonical/heirachal means of links that connect all nodes in a
- * non-redundant way.
+ * The Node class is the lowest level abstraction which the users of the
+ * library will want to use.  It actually adds no functionality on top
+ * of the Traversable object.
  */
-class Traversable : public Branch
+class Node : public Traversable
 {
 public:
     /**
      * Generic Destructor
      */
-    virtual ~Traversable(){}
-
-    /**
-     * The traverse command will take a visitor object, and invoke it upon
-     * all heirarchal children of the current node.  This makes it easier
-     * to pass logic down the tree.
-     */
-    virtual void traverse(Visitor &);
+    virtual ~Node(){}
 };
 
-#endif
+#endif /* NODE_HPP */

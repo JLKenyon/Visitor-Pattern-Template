@@ -23,37 +23,32 @@
   OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef _VISITABLE_HPP_ 
-#define _VISITABLE_HPP_ 
+#ifndef _BRANCH_HPP_
+#define _BRANCH_HPP_
 
-class Visitable;
+class Branch;
 
-#include <Visitor.hpp>
+//#include <Node.hpp>
+
+#include <Visitor/Visitable.hpp>
+#include <Visitor/Types.hpp>
+
 #include <boost/shared_ptr.hpp>
+#include <boost/weak_ptr.hpp>
 
-typedef boost::shared_ptr<Visitable>      Visitable_Ptr;
-typedef boost::weak_ptr  <Visitable> Weak_Visitable_Ptr;
+typedef boost::shared_ptr<Branch>      Branch_Ptr;
+typedef boost::weak_ptr  <Branch> Weak_Branch_Ptr;
 
 /**
- * The Visitable class is the basis for the visitor pattern.  It represents the
- * lowest level base class, with no internal logic of its own, it provides
- * a place for data to reside, by way of derived classes.
+ * The Branch class adds a list of links to children, 
  */
-class Visitable
+class Branch : public Visitable, public Types<Branch_Ptr>::Container
 {
 public:
     /**
      * Generic destructor
      */
-    virtual ~Visitable(){}
-    
-    /**
-     * Accept is the key method that makes the visitor pattern work.
-     * By having the class, which knows its type, call the visit method
-     * by way of its own virtual method accept, the types can be resolved
-     * at run time, by way of the virtual function table.
-     */
-    virtual void accept(Visitor &);
+    virtual ~Branch(){}
 };
 
-#endif
+#endif /* BRANCH_HPP */

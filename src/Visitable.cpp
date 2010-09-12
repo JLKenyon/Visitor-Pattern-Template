@@ -23,7 +23,7 @@
   OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <Visitable.hpp>
+#include <Visitor/Visitable.hpp>
 
 void Visitable::accept(Visitor &)
 {}

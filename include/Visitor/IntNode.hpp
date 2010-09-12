@@ -1,3 +1,4 @@
+
 /*
   Copyright (c) 2010 John Lincoln Kenyon
   
@@ -23,32 +24,46 @@
   OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef _BRANCH_HPP_
-#define _BRANCH_HPP_
+#ifndef _INTNODE_H_
+#define _INTNODE_H_
 
-class Branch;
+class IntNode;
 
-//#include <Node.hpp>
+#include <Visitor/Node.hpp>
 
-#include <Visitable.hpp>
-#include <Types.hpp>
-
-#include <boost/shared_ptr.hpp>
-#include <boost/weak_ptr.hpp>
-
-typedef boost::shared_ptr<Branch>      Branch_Ptr;
-typedef boost::weak_ptr  <Branch> Weak_Branch_Ptr;
+typedef boost::shared_ptr<IntNode>      IntNode_Ptr;
+typedef boost::weak_ptr  <IntNode> Weak_IntNode_Ptr;
 
 /**
- * The Branch class adds a list of links to children, 
+ * IntNode is a trivial Node type that has a single Integer value.
+ * This class is an example, it doesn't have any real purpose.
  */
-class Branch : public Visitable, public Types<Branch_Ptr>::Container
+class IntNode : public Node
 {
 public:
+   /**
+    * Generic Destructor
+    */
+    virtual ~IntNode() {}
+
     /**
-     * Generic destructor
+     * Default constructor, defaults to a value of zero.
+    */
+    IntNode();
+
+    /**
+     * Parametric constructor, user specified value
+     * \param _value The initial value stored in node
+    */
+    IntNode(int _value);
+
+public:
+    /**
+     * Generic Integer value, no real specified purpose.
      */
-    virtual ~Branch(){}
+    int value;
+    
 };
 
-#endif /* BRANCH_HPP */
+#endif /* _INTNODE_H_ */
+

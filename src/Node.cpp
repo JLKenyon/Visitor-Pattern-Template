@@ -23,6 +23,6 @@
   OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <Node.hpp>
+#include <Visitor/Node.hpp>
 
 // At present, Node has no functions, This will change

@@ -28,7 +28,7 @@
 
 class Visitor;
 
-#include <Visitable.hpp>
+#include <Visitor/Visitable.hpp>
 
 /**
  * The visitor class is the basic container for logic within the Visitor

@@ -1,4 +1,3 @@
-
 /*
   Copyright (c) 2010 John Lincoln Kenyon
   
@@ -24,46 +23,44 @@
   OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef _INTNODE_H_
-#define _INTNODE_H_
+#ifndef _TRAVERSABLE_HPP_
+#define _TRAVERSABLE_HPP_
 
-class IntNode;
+class Traversable;
 
-#include <Node.hpp>
+#include <Visitor/Branch.hpp>
+#include <Visitor/Visitable.hpp>
+#include <Visitor/Visitor.hpp>
 
-typedef boost::shared_ptr<IntNode>      IntNode_Ptr;
-typedef boost::weak_ptr  <IntNode> Weak_IntNode_Ptr;
+#include <boost/shared_ptr.hpp>
+#include <boost/weak_ptr.hpp>
+
+typedef boost::shared_ptr<Traversable>      Traversable_Ptr;
+typedef boost::weak_ptr  <Traversable> Weak_Traversable_Ptr;
 
 /**
- * IntNode is a trivial Node type that has a single Integer value.
- * This class is an example, it doesn't have any real purpose.
+ * The Traversable class adds a method to traverse across nodes along the
+ * heirarchical connections, which should be a strict-tree(1).
+ *
+ * Other connections and traversal methods may exist, which may be
+ * generalized graphs.  However, for all of our sanity, there should be
+ * a canonical/heirachal means of links that connect all nodes in a
+ * non-redundant way.
  */
-class IntNode : public Node
+class Traversable : public Branch
 {
 public:
-   /**
-    * Generic Destructor
-    */
-    virtual ~IntNode() {}
-
     /**
-     * Default constructor, defaults to a value of zero.
-    */
-    IntNode();
-
-    /**
-     * Parametric constructor, user specified value
-     * \param _value The initial value stored in node
-    */
-    IntNode(int _value);
-
-public:
-    /**
-     * Generic Integer value, no real specified purpose.
+     * Generic Destructor
      */
-    int value;
-    
+    virtual ~Traversable(){}
+
+    /**
+     * The traverse command will take a visitor object, and invoke it upon
+     * all heirarchal children of the current node.  This makes it easier
+     * to pass logic down the tree.
+     */
+    virtual void traverse(Visitor &);
 };
 
-#endif /* _INTNODE_H_ */
-
+#endif

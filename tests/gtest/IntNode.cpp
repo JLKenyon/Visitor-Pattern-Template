@@ -1,7 +1,7 @@
 
 #include <gtest/gtest.h>
 
-#include <IntNode.hpp>
+#include <Visitor/IntNode.hpp>
 
 TEST(IntNode, ConstructorTest) {
     IntNode node;

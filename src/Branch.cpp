@@ -23,6 +23,6 @@
   OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <Branch.hpp>
+#include <Visitor/Branch.hpp>
 
 // At present, Node has no functions, This will change

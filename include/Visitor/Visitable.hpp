@@ -23,36 +23,38 @@
   OTHER DEALINGS IN THE SOFTWARE.
 */
 
-/**
- */
+#ifndef _VISITABLE_HPP_ 
+#define _VISITABLE_HPP_ 
 
-#ifndef _NODE_HPP_
-#define _NODE_HPP_
+class Visitable;
 
-class Node;
-
-#include <Traversable.hpp>
-#include <Types.hpp>
-#include <Visitable.hpp>
+#include <Visitor/Visitor.hpp>
 
 #include <boost/shared_ptr.hpp>
-#include <boost/weak_ptr.hpp>
 
-typedef boost::shared_ptr<Node>      Node_Ptr;
-typedef boost::weak_ptr  <Node> Weak_Node_Ptr;
+typedef boost::shared_ptr<Visitable>      Visitable_Ptr;
+typedef boost::weak_ptr  <Visitable> Weak_Visitable_Ptr;
 
 /**
- * The Node class is the lowest level abstraction which the users of the
- * library will want to use.  It actually adds no functionality on top
- * of the Traversable object.
+ * The Visitable class is the basis for the visitor pattern.  It represents the
+ * lowest level base class, with no internal logic of its own, it provides
+ * a place for data to reside, by way of derived classes.
  */
-class Node : public Traversable
+class Visitable
 {
 public:
     /**
-     * Generic Destructor
+     * Generic destructor
      */
-    virtual ~Node(){}
+    virtual ~Visitable(){}
+    
+    /**
+     * Accept is the key method that makes the visitor pattern work.
+     * By having the class, which knows its type, call the visit method
+     * by way of its own virtual method accept, the types can be resolved
+     * at run time, by way of the virtual function table.
+     */
+    virtual void accept(Visitor &);
 };
 
-#endif /* NODE_HPP */
+#endif
