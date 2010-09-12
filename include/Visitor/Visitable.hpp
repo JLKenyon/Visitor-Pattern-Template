@@ -26,35 +26,44 @@
 #ifndef _VISITABLE_HPP_ 
 #define _VISITABLE_HPP_ 
 
-class Visitable;
-
+namespace Visitor
+{
+    class Visitable;
+}
 #include <Visitor/Visitor.hpp>
 
 #include <boost/shared_ptr.hpp>
 
-typedef boost::shared_ptr<Visitable>      Visitable_Ptr;
-typedef boost::weak_ptr  <Visitable> Weak_Visitable_Ptr;
-
-/**
- * The Visitable class is the basis for the visitor pattern.  It represents the
- * lowest level base class, with no internal logic of its own, it provides
- * a place for data to reside, by way of derived classes.
- */
-class Visitable
+namespace Visitor
 {
-public:
-    /**
-     * Generic destructor
-     */
-    virtual ~Visitable(){}
+    /// Smart Pointer
+    typedef boost::shared_ptr<Visitable>      Visitable_Ptr;
     
+    /// Weak Smart Pointer
+    typedef boost::weak_ptr  <Visitable> Weak_Visitable_Ptr;
+
     /**
-     * Accept is the key method that makes the visitor pattern work.
-     * By having the class, which knows its type, call the visit method
-     * by way of its own virtual method accept, the types can be resolved
-     * at run time, by way of the virtual function table.
+     * The Visitable class is the basis for the visitor pattern.  It represents the
+     * lowest level base class, with no internal logic of its own, it provides
+     * a place for data to reside, by way of derived classes.
      */
-    virtual void accept(Visitor &);
-};
+    class Visitable
+    {
+        public:
+            /**
+             * Generic destructor
+             */
+            virtual ~Visitable(){}
+
+            /**
+             * Accept is the key method that makes the visitor pattern work.
+             * By having the class, which knows its type, call the visit method
+             * by way of its own virtual method accept, the types can be resolved
+             * at run time, by way of the virtual function table.
+             */
+            virtual void accept(Visitor &);
+    };
+}
 
 #endif
+

@@ -25,6 +25,10 @@
 
 #include <Visitor/Visitable.hpp>
 
-void Visitable::accept(Visitor &)
-{}
-
+namespace Visitor
+{
+    void Visitable::accept(Visitor &)
+    {
+    
+    }
+}

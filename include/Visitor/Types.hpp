@@ -36,33 +36,39 @@
 #ifndef _TYPES_HPP_
 #define _TYPES_HPP_
 
-template <typename T>
-struct Types;
-
+namespace Visitor
+{
+    template <typename T>
+        struct Types;
+}
 #include <vector>
 #include <list>
 #include <map>
 #include <deque>
 
-/**
- * The Types struct exists at a means of exploiting a failing of the template
- * system in C++, specifically that one cannot apply templates to a typedef.
- * 
- * One could instead create a new class for each, inheriting from the desired
- * class, but this is a bit cumbersome for simple cases.
- */
-template <typename T>
-struct Types
+namespace Visitor
 {
     /**
-     * The Container is the generic linear container used within the Visitor
-     * example.  It can be replaced fairly easily by changing it here.
-     *
-     * The Deque class was selected because it is optimized for adding nodes
-     * to the end, and is a generally flexible type.  This choice is actually
-     * fairly flexible, vector<> or list<> would work as well.
+     * The Types struct exists at a means of exploiting a failing of the template
+     * system in C++, specifically that one cannot apply templates to a typedef.
+     * 
+     * One could instead create a new class for each, inheriting from the desired
+     * class, but this is a bit cumbersome for simple cases.
      */
-    typedef std::deque<T> Container;
-};
+    template <typename T>
+        struct Types
+        {
+            /**
+             * The Container is the generic linear container used within the Visitor
+             * example.  It can be replaced fairly easily by changing it here.
+             *
+             * The Deque class was selected because it is optimized for adding nodes
+             * to the end, and is a generally flexible type.  This choice is actually
+             * fairly flexible, vector<> or list<> would work as well.
+             */
+            typedef std::deque<T> Container;
+        };
+}
 
 #endif /* _TYPES_H_ */
+

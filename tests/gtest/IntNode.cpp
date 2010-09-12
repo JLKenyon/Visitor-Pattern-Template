@@ -3,6 +3,8 @@
 
 #include <Visitor/IntNode.hpp>
 
+using namespace Visitor;
+
 TEST(IntNode, ConstructorTest) {
     IntNode node;
 }

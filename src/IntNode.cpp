@@ -26,13 +26,15 @@
 
 #include <Visitor/IntNode.hpp>                                    
 
-IntNode::IntNode()
+namespace Visitor
 {
-    value = 0;
-}
+    IntNode::IntNode()
+    {
+        value = 0;
+    }
 
-IntNode::IntNode(int _value)
-{
-    value = _value;
+    IntNode::IntNode(int _value)
+    {
+        value = _value;
+    }
 }
-

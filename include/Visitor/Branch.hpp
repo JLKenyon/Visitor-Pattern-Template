@@ -26,7 +26,10 @@
 #ifndef _BRANCH_HPP_
 #define _BRANCH_HPP_
 
-class Branch;
+namespace Visitor
+{
+    class Branch;
+}
 
 //#include <Node.hpp>
 
@@ -36,19 +39,26 @@ class Branch;
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
 
-typedef boost::shared_ptr<Branch>      Branch_Ptr;
-typedef boost::weak_ptr  <Branch> Weak_Branch_Ptr;
-
-/**
- * The Branch class adds a list of links to children, 
- */
-class Branch : public Visitable, public Types<Branch_Ptr>::Container
+namespace Visitor
 {
-public:
+    /// Smart Pointer
+    typedef boost::shared_ptr<Branch>      Branch_Ptr;
+
+    /// Weak Smart Pointer
+    typedef boost::weak_ptr  <Branch> Weak_Branch_Ptr;
+
     /**
-     * Generic destructor
+     * The Branch class adds a list of links to children, 
      */
-    virtual ~Branch(){}
-};
+    class Branch : public Visitable, public Types<Branch_Ptr>::Container
+    {
+        public:
+            /**
+             * Generic destructor
+             */
+            virtual ~Branch(){}
+    };
+
+}
 
 #endif /* BRANCH_HPP */

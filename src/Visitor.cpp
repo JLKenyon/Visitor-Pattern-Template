@@ -25,5 +25,10 @@
 
 #include <Visitor/Visitor.hpp>
 
-void Visitor::visit(Visitable *)
-{}
+namespace Visitor
+{
+    void Visitor::visit(Visitable *)
+    {
+    
+    }
+}

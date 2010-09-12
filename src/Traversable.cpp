@@ -25,5 +25,8 @@
 
 #include <Visitor/Traversable.hpp>
 
-void Traversable::traverse(Visitor &)
-{}
+namespace Visitor
+{
+    void Traversable::traverse(Visitor &)
+    {}
+}
