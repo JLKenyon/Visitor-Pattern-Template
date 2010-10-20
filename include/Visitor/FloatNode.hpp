@@ -24,58 +24,58 @@
   OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef _INTNODE_H_
-#define _INTNODE_H_
+#ifndef _FLOATNODE_H_
+#define _FLOATNODE_H_
 
 namespace Visitor
 {
-    class IntNode;
+    class FloatNode;
 }
 #include <Visitor/Node.hpp>
 
 namespace Visitor
 {
     /// Smart Pointer
-    typedef boost::shared_ptr<IntNode>      IntNode_Ptr;
+    typedef boost::shared_ptr<FloatNode>      IntNode_Ptr;
 
     /// Weak Smart Pointer
-    typedef boost::weak_ptr  <IntNode> Weak_IntNode_Ptr;
+    typedef boost::weak_ptr  <FloatNode> Weak_IntNode_Ptr;
 
     /**
-     * IntNode is a trivial Node type that has a single Integer value.
+     * FloatNode is a trivial Node type that has a single Float value.
      * This class is an example, it doesn't have any real purpose.
      */
-    class IntNode : public Node
+    class FloatNode : public Node
     {
         public:
             /**
              * Generic Destructor
              */
-            virtual ~IntNode() {}
+            virtual ~FloatNode() {}
 
             /**
              * Default constructor, defaults to a value of zero.
              */
-            IntNode();
+            FloatNode();
 
             /**
              * Parametric constructor, user specified value
              * \param _value The initial value stored in node
              */
-            IntNode(int _value);
+            FloatNode(float _value);
 
-            int getValue();
+            float getValue();
 
-            void setValue(int p_value);
+            void setValue(float p_value);
 
         private:
             /**
              * Generic Integer value, no real specified purpose.
              */
-            int value;
+            float value;
 
     };
 }
 
-#endif /* _INTNODE_H_ */
+#endif /* _FLOATNODE_H_ */
 

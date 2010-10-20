@@ -4,3 +4,5 @@ bin
 lib
 build
 doc
+test_detail.xml
+*.pyc

@@ -24,26 +24,26 @@
   OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <Visitor/IntNode.hpp>                                    
+#include <Visitor/FloatNode.hpp>                                    
 
 namespace Visitor
 {
-    IntNode::IntNode()
+    FloatNode::FloatNode()
     {
         value = 0;
     }
 
-    IntNode::IntNode(int _value)
+    FloatNode::FloatNode(float _value)
     {
         value = _value;
     }
     
-    int IntNode::getValue()
+    float FloatNode::getValue()
     {
         return value;
     }
 
-    void IntNode::setValue(int _value)
+    void FloatNode::setValue(float _value)
     {
         value = _value;
     }
